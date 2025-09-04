@@ -7,6 +7,8 @@ import "./App.css";
 import prism from "prismjs";
 import axios from "axios";
 import Markdown from "react-markdown";
+const API_URL = import.meta.env.VITE_API_URL;
+
 function App() {
   const [code, setCode] = useState(`function sum(a,b){return a+b;}`);
   const [review, setReview] = useState(``);
@@ -17,9 +19,11 @@ function App() {
   }, []);
 
   async function Reviewcode() {
+    console.log(API_URL+" tttt");
+    
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:3000/ai/get-review", {
+      const response = await axios.post(`${API_URL}/ai/get-review`, {
         code,
       });
       setReview(response.data.response);
