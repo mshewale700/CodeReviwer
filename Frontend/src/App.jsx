@@ -10,7 +10,7 @@ import Markdown from "react-markdown";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
-  const [code, setCode] = useState(`function sum(a,b){return a+b;}`);
+  const [code, setCode] = useState(``);
   const [review, setReview] = useState(``);
   const [loading, setLoading] = useState(false);
 
@@ -41,6 +41,7 @@ function App() {
         <div className="left">
           <div className="code">
             <Editor
+              placeholder="Write your code here.."
               value={code}
               onValueChange={(code) => setCode(code)}
               highlight={(code) =>
